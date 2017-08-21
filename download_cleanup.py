@@ -8,7 +8,13 @@ folder_names = ["Images","Videos","Audio","Application","Extras","Folders"]
 def make_folders(path):
     for val in folder_names:
         extrasPath = os.path.join(path, val)
-        os.makedirs(extrasPath, exist_ok=True)
+
+        #For python 3.5+
+        #os.makedirs(extrasPath, exist_ok=True)
+
+        # For python 2.7+
+        if(os.path.exists(extrasPath) != True):
+            os.makedirs(extrasPath)
 
 def updateDirs(path):
 
@@ -58,7 +64,7 @@ def updateDirs(path):
 
 if __name__ == "__main__":
 
-    downloads_path = "C:/Users/ANIRUDH/Downloads/"
+    downloads_path = "/Users/anirudhnj/Downloads/"
 
     make_folders(downloads_path)
     updateDirs(downloads_path)
